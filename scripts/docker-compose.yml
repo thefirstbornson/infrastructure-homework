@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  postgres-ih:
+    container_name: postgres_ih
+    image: postgres:13.0
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d people -U user"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    environment:
+      POSTGRES_DB: people
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-ih:/var/lib/postgresql/data
+    networks:
+      - ih
+    ports:
+      - 5832:5432
+  infra-home:
+    container_name: infra-home
+    image: my-rep:latest
+    depends_on:
+      postgres-ih:
+        condition: service_started
+    environment:
+      DATABASE_HOST: postgres-ih
+      DATABASE_PORT: 5432
+      DATABASE_NAME: people
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: password
+      LIQUIBASE_ENABLED: "true"
+      JPA_SHOW_SQL: "true"
+    ports:
+      - 8080:8080
+    networks:
+      - ih
+networks:
+  ih:
+    driver: bridge
+volumes:
+  db-ih:
