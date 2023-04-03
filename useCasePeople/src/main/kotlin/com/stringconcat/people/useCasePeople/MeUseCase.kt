@@ -10,7 +10,7 @@ class MeUseCase(
         private val persistPerson: PersistPerson
 ) {
     operator fun invoke(): Person {
-        val id = UUID.fromString("29f4d7e3-fd7c-4664-ad07-763326215ec4")
+//        val id = UUID.fromString("29f4d7e3-fd7c-4664-ad07-763326215ec4")
         val me = Person(
                 id = UUID.fromString("29f4d7e3-fd7c-4664-ad07-763326215ec4"),
                 firstName = "Sergey",
