@@ -12,7 +12,7 @@ dependencies {
 
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("org.apache.logging.log4j:log4j-core:2.17.2")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.2.1.BUILD-SNAPSHOT")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.2.1.RELEASE")
 
     // kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
