@@ -1,7 +1,7 @@
 name: Run Gradle on PRs
 on:
   push:
-    branches: [ feat-scripts-added ]
+    branches: [ main, feat-scripts-added ]
 jobs:
   gradle:
     strategy:
