@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val parentProjectDir = projectDir
+
 plugins {
     id("org.springframework.boot") version "2.2.1.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
@@ -11,11 +13,6 @@ plugins {
     checkstyle
     jacoco
     id ("com.github.ben-manes.versions") version "0.46.0"
-}
-
-detekt {
-    config = files("detekt/config.yml")
-    buildUponDefaultConfig = true
 }
 
 configurations.all {
@@ -30,6 +27,29 @@ configurations.all {
 allprojects {
     group = "com.stringconcat"
     version = "0.0.1"
+
+    apply {
+        plugin("java")
+        plugin("org.jetbrains.kotlin.jvm")
+        plugin("io.gitlab.arturbosch.detekt")
+        plugin("jacoco")
+        plugin("com.github.ben-manes.versions")
+        plugin("org.owasp.dependencycheck")
+    }
+
+    detekt {
+        config = files("$parentProjectDir/detekt/config.yml")
+        buildUponDefaultConfig = true
+        input = files("src/main/kotlin", "src/test/kotlin", "src/test/gatling")
+
+        reports {
+            html.enabled = true
+        }
+
+//        dependencies {
+//            detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+//        }
+    }
 
     repositories {
         mavenCentral()
@@ -109,3 +129,4 @@ tasks.test {
     finalizedBy(tasks.jacocoTestReport)
     finalizedBy(tasks.jacocoTestCoverageVerification)
 }
+

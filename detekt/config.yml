@@ -1,20 +1,22 @@
 style:
   NewLineAtEndOfFile:
-    active: false
+    active: true
   WildcardImport:
     active: false
   ExpressionBodySyntax:
     active: false
   TrailingWhitespace:
-    active: false
+    active: true
   UnderscoresInNumericLiterals:
-    active: false
+    active: true
   DataClassContainsFunctions:
     active: false
   OptionalWhenBraces:
-    active: false
+    active: true
   ReturnCount:
     max: 3
+  UnusedImports:
+    active: true
 
 
 exceptions:

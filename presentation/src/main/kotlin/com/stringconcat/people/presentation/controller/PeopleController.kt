@@ -1,12 +1,12 @@
 package com.stringconcat.people.presentation.controller
 
+import com.stringconcat.people.presentation.model.PersonRespectfullViewModel
+import com.stringconcat.people.presentation.view.personDetailsForm
+import com.stringconcat.people.presentation.view.renderDetailedView
 import com.stringconcat.people.useCasePeople.CreateNewPersonUseCase
 import com.stringconcat.people.useCasePeople.GetPersonUseCase
 import com.stringconcat.people.useCasePeople.MeUseCase
 import com.stringconcat.people.useCasePeople.PersonCreationSummary
-import com.stringconcat.people.presentation.model.PersonRespectfullViewModel
-import com.stringconcat.people.presentation.view.personDetailsForm
-import com.stringconcat.people.presentation.view.renderDetailedView
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
-import java.io.*
 import java.net.URI
 import java.util.*
 
